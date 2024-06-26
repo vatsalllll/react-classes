@@ -1,16 +1,15 @@
 import './App.css';
 import { a, b } from './components/Products/Products';
 import Products from './components/Products/Products';
+import Cart from './components/Cart/Cart'; // Import the Cart component
 import { useState } from 'react';
 import CartContext from './context/CartContext';
+
 function App() {
-  // state variable
-  // inc
-  // dec
   let [cart, setCart] = useState({});
+
   function increaseQuantity(product) {
     const newCart = { ...cart };
-    // if(cart[product.id])
     if (!newCart[product.id]) {
       newCart[product.id] = {
         ...product,
@@ -18,7 +17,6 @@ function App() {
       };
     }
     newCart[product.id].quantity += 1;
-    console.log(newCart);
     setCart(newCart);
   }
 
@@ -34,26 +32,13 @@ function App() {
 
   console.log(a, b);
   return (
-    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity}}>
+    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }}>
       <div className="App">
-        <Products  />
+        <Products />
+        <Cart /> {/* Add the Cart component here */}
       </div>
     </CartContext.Provider>
   );
 }
 
 export default App;
-
-// {1:{id: 1, quantity: 11}, 2:{id: 2, quantity: 10}, 3:{id: 3, quantity: 10}, 4:{id: 4, quantity: 10}}
-
-// button
-// - 1 +
-
-// let a = {b:10, c:20};
-//a.b = 30;
-// let b = {...a};
-
-// a => 1234
-// a => 12
-
-// {cart: cart, increaseQuantity: increaseQuantity}
