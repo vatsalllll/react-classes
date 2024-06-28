@@ -26,6 +26,7 @@ function AddToCart({ product }) {
             </div>
         )
     }
+
 }
 
 export default AddToCart;
